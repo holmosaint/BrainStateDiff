@@ -1,0 +1,19 @@
+{
+  "seed": 42,
+  "image_embeddings": "/data/image_tokens.pt",
+  "image_emb_dim": 768,
+  "subjects": [
+    {"name": "mouse1", "train": "widefield_calcium_imaging/data/mouse1_train.h5", "val": "widefield_calcium_imaging/data/mouse1_val.h5", "test": "widefield_calcium_imaging/data/mouse1_test.h5"},
+    {"name": "mouse2", "train": "widefield_calcium_imaging/data/mouse2_train.h5", "val": "widefield_calcium_imaging/data/mouse2_val.h5", "test": "widefield_calcium_imaging/data/mouse2_test.h5"}
+  ],
+  "vae": {
+    "checkpoint": "runs/widefield/vae/best.pt",
+    "model": {"in_channels": 1, "out_channels": 1, "down_block_dims": [64,128,256,512], "up_block_dims": [512,256,128,64], "latent_dim": 8, "num_groups_per_norm": 32, "activation": "relu"},
+    "training": {"epochs": 50, "batch_size": 32, "lr": 0.0001, "weight_decay": 0.0, "w_pyr": 5.0, "w_sobel": 1.0, "w_msssim": 0.0, "w_temp": 0.0, "beta_start": 0.0, "beta_end": 0.001, "warmup_steps": 1000}
+  },
+  "diffusion": {
+    "model": {"unet_dim": 512, "cond_dim": 8, "dim_mults": [1,2,4], "attn_heads": 8, "attn_dim_head": 32, "init_dim": null, "init_kernel_size": 7, "use_sparse_linear_attn": true},
+    "window": {"history_frames": 20, "target_frames": 8, "stim_onset_frame": 20, "cond_start_frame": 20, "frame_st": 0, "frame_end": 28},
+    "training": {"epochs": 50, "batch_size": 8, "lr": 0.0001, "weight_decay": 0.0001, "grad_clip": 1.0, "prediction_type": "x0", "diffusion_steps": 1000, "beta_schedule": "squaredcos_cap_v2", "history_noise_prob": 0.0, "history_drop_prob": 0.1, "cfg_drop_prob": 0.1, "ema": false, "latent_stats_max_batches": 200}
+  }
+}

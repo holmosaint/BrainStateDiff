@@ -1,0 +1,20 @@
+{
+  "seed": 0,
+  "real_train": "widefield_calcium_imaging/data/mouse1_train.h5",
+  "synthetic_train": "runs/widefield/cross/mouse1_cross_state.h5",
+  "val": "widefield_calcium_imaging/data/mouse1_val.h5",
+  "test": "widefield_calcium_imaging/data/mouse1_test.h5",
+  "real_window": [
+    20,
+    28
+  ],
+  "synthetic_window": [
+    0,
+    8
+  ],
+  "num_classes": 78,
+  "batch_size": 64,
+  "epochs": 100,
+  "lr": 0.0001,
+  "patience": 5
+}

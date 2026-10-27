@@ -1,0 +1,43 @@
+name: TVSD
+dataset_params:
+  im_path: ${TVSD_DATA}
+  im_channels: 3
+  im_size: 256
+  name: TVSD
+  timeseries_h5_path: ${TVSD_DATA}/ventral_stream_timeseries_preprocessed_no_baseline_nb30.h5
+temporal_params:
+  baseline_bins:
+  - 0
+  - 10
+  target_bins:
+  - 15
+  - 25
+diffusion_params:
+  num_timesteps: 1000
+  beta_start: 0.00085
+  beta_end: 0.012
+  prediction_type: sample
+model_params:
+  hidden_dim: 384
+  cond_dim: 384
+  time_dim: 384
+  subject_emb_dim: 128
+  baseline_dim: 256
+  depth: 8
+  num_heads: 6
+  mlp_ratio: 4.0
+  dropout: 0.0
+  vit_model_id: facebook/vit-mae-base
+train_params:
+  seed: 42
+  batch_size: 64
+  num_epochs: 1000
+  lr: 0.0001
+  weight_decay: 1e-4
+  warmup_steps: 1000
+  ema_decay: 0.9999
+  cond_drop_prob: 0.1
+  save_every_epochs: 25
+  num_inference_steps: 50
+  guidance_scale: 1.0
+  num_workers: 1

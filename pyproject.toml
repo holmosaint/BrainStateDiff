@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brainstatediff"
+version = "0.1.0"
+description = "State-conditioned neural diffusion and downstream evaluation for three recording datasets"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "torch==2.11.0",
+  "torchvision==0.26.0",
+  "numpy==2.2.0",
+  "scipy==1.14.1",
+  "scikit-learn==1.7.2",
+  "diffusers==0.37.1",
+  "transformers==5.3.0",
+  "h5py==3.16.0",
+  "PyYAML==6.0.3",
+  "einops==0.8.2",
+  "tqdm==4.67.3",
+  "Pillow==11.3.0",
+  "opencv-python-headless==4.13.0.92",
+  "scikit-image==0.25.2",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["widefield_calcium_imaging*", "TVSD*", "2p_striatum*"]
+
+[project.optional-dependencies]
+data = ["pynwb==3.1.3", "dandi==0.76.4"]
+
+[tool.setuptools.package-data]
+"*" = ["*.json", "*.yaml", "*.md"]
+"TVSD" = ["configs/*.yaml", "configs/*.json"]
+"TVSD.downstream_task.models" = ["weights/v0.1/vgg.pth"]

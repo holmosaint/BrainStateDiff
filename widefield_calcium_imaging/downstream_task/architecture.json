@@ -1,0 +1,204 @@
+[
+  {
+    "id": 1,
+    "merger": "identity",
+    "merger_params": {},
+    "name": "ResBlock3d",
+    "params": {
+      "act_fn": "tanhshrink",
+      "dropout": 0.5,
+      "expansion": 4,
+      "input_dim": 64,
+      "kernel_size": [
+        5,
+        3,
+        3
+      ],
+      "norm_num_groups": 32,
+      "output_dim": 128,
+      "stride": [
+        1,
+        1,
+        1
+      ]
+    },
+    "parents": [
+      0
+    ]
+  },
+  {
+    "id": 2,
+    "merger": "identity",
+    "merger_params": {},
+    "name": "MaxPool3d",
+    "params": {
+      "kernel_size": [
+        1,
+        7,
+        7
+      ],
+      "padding": [
+        0,
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        2,
+        2
+      ]
+    },
+    "parents": [
+      1
+    ]
+  },
+  {
+    "id": 3,
+    "merger": "identity",
+    "merger_params": {},
+    "name": "ResBlock3d",
+    "params": {
+      "act_fn": "leaky_relu",
+      "dropout": 0.1,
+      "expansion": 1,
+      "input_dim": 32,
+      "kernel_size": [
+        3,
+        3,
+        3
+      ],
+      "norm_num_groups": 16,
+      "output_dim": 64,
+      "stride": [
+        1,
+        1,
+        1
+      ]
+    },
+    "parents": [
+      2
+    ]
+  },
+  {
+    "id": 4,
+    "merger": "identity",
+    "merger_params": {},
+    "name": "MaxPool3d",
+    "params": {
+      "kernel_size": [
+        1,
+        5,
+        5
+      ],
+      "padding": [
+        0,
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1,
+        1
+      ]
+    },
+    "parents": [
+      3
+    ]
+  },
+  {
+    "id": 5,
+    "merger": "identity",
+    "merger_params": {},
+    "name": "ResBlock3d",
+    "params": {
+      "act_fn": "mish",
+      "dropout": 0.4,
+      "expansion": 4,
+      "input_dim": 256,
+      "kernel_size": [
+        1,
+        7,
+        7
+      ],
+      "norm_num_groups": 16,
+      "output_dim": 32,
+      "stride": [
+        1,
+        1,
+        1
+      ]
+    },
+    "parents": [
+      4
+    ]
+  },
+  {
+    "id": 6,
+    "merger": "identity",
+    "merger_params": {},
+    "name": "MaxPool3d",
+    "params": {
+      "kernel_size": [
+        1,
+        5,
+        5
+      ],
+      "padding": [
+        0,
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        2,
+        2
+      ]
+    },
+    "parents": [
+      5
+    ]
+  },
+  {
+    "id": 7,
+    "merger": "identity",
+    "merger_params": {},
+    "name": "ResBlock3d",
+    "params": {
+      "act_fn": "rrlu",
+      "dropout": 0.4,
+      "expansion": 4,
+      "input_dim": 256,
+      "kernel_size": [
+        3,
+        3,
+        3
+      ],
+      "norm_num_groups": 16,
+      "output_dim": 256,
+      "stride": [
+        1,
+        2,
+        2
+      ]
+    },
+    "parents": [
+      6
+    ]
+  },
+  {
+    "id": 8,
+    "merger": "identity",
+    "merger_params": {},
+    "name": "AdaptiveMaxPool3d",
+    "params": {
+      "output_size": [
+        1,
+        4,
+        4
+      ]
+    },
+    "parents": [
+      7
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+runs/
+datasets/
+*.pt
+*.pth
+!TVSD/downstream_task/models/weights/v0.1/vgg.pth
+*.ckpt
+*.h5
+*.hdf5
+*.nwb
+widefield_calcium_imaging/data/dandiset/
